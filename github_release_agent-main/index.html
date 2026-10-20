@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Release Documentation Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Subtle Sci-Fi Grid Overlay */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        /* Neon Glow Effect */
+        .cyber-glow {
+            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25), 0 0 15px -5px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 bg-grid-pattern text-slate-100 min-h-screen flex flex-col justify-between items-center p-4 sm:p-6 font-sans relative overflow-x-hidden">
+
+    <!-- Glowing Background Orbs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <main class="w-full max-w-lg my-auto relative z-10">
+        <!-- Header / Brand Container -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center p-3.5 bg-slate-900/80 rounded-2xl border border-cyan-500/30 cyber-glow mb-4 backdrop-blur-md">
+                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent uppercase">
+                GitHub Release Documentation Manager
+            </h1>
+            
+            <div class="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-slate-900/60 border border-slate-800 text-xs">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span class="text-slate-400">Created by <span class="text-cyan-300 font-semibold tracking-wide">swapna v</span></span>
+            </div>
+        </div>
+
+        <!-- Main Sci-Fi Glass Card -->
+        <div class="bg-slate-900/60 backdrop-blur-xl p-6 sm:p-8 rounded-2xl border border-cyan-500/20 shadow-2xl relative">
+            
+            <!-- Corner Cyber Accent Lines -->
+            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400 rounded-tl-2xl"></div>
+            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-400 rounded-tr-2xl"></div>
+            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-400 rounded-bl-2xl"></div>
+            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400 rounded-br-2xl"></div>
+
+            <p class="text-xs text-cyan-300/80 mb-6 bg-cyan-950/30 p-3 rounded-lg border border-cyan-500/20 flex items-center gap-2 font-mono">
+                <span class="text-cyan-400">>[AI-AGENT]:</span> Synthesizing telemetry via Gemini & GitHub MCP.
+            </p>
+
+            <form id="changelogForm" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-cyan-400/90 uppercase tracking-wider mb-2 font-mono">
+                        GitHub Personal Access Token
+                    </label>
+                    <input type="password" id="github_pat" required placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" 
+                        class="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder:text-slate-600 font-mono">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-cyan-400/90 uppercase tracking-wider mb-2 font-mono">
+                        Target Repository URL
+                    </label>
+                    <input type="url" id="repo_url" required placeholder="https://github.com/username/repository" 
+                        class="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder:text-slate-600 font-mono">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-cyan-400/90 uppercase tracking-wider mb-2 font-mono">
+                        Release Version Tag
+                    </label>
+                    <input type="text" id="version_tag" value="1.1.0" required 
+                        class="w-full p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-slate-100 text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder:text-slate-600 font-mono">
+                </div>
+
+                <button type="submit" id="submitBtn" 
+                    class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-sm uppercase tracking-wider shadow-lg shadow-cyan-500/20 active:scale-[0.99]">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    Execute Agent
+                </button>
+            </form>
+
+            <!-- Status Section -->
+            <div id="status" class="mt-6 hidden">
+                <div id="loading" class="flex items-center gap-3 text-cyan-400 text-xs bg-cyan-950/40 p-3.5 rounded-xl border border-cyan-500/30 animate-pulse font-mono">
+                    <svg class="w-4 h-4 animate-spin flex-shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>SYS_EXEC: Querying MCP Node & Generating Documentation...</span>
+                </div>
+                
+                <div id="result" class="mt-2 text-xs p-4 rounded-xl bg-slate-950/90 border border-slate-800 hidden font-mono"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-600 py-4 font-mono">
+        SYS_STATUS: ACTIVE &bull; MCP PROTOCOL & GEMINI 3.5 INTEGRATED
+    </footer>
+
+    <script>
+        document.getElementById('changelogForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('status');
+            const loadingDiv = document.getElementById('loading');
+            const resultDiv = document.getElementById('result');
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            statusDiv.classList.remove('hidden');
+            loadingDiv.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            const payload = {
+                github_pat: document.getElementById('github_pat').value,
+                repo_url: document.getElementById('repo_url').value,
+                version_tag: document.getElementById('version_tag').value
+            };
+
+            try {
+                const response = await fetch('/generate-changelog', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                loadingDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+
+                if (response.ok && data.status === "success") {
+                    resultDiv.innerHTML = `
+                        <div class="flex items-center gap-1.5 text-emerald-400 font-semibold mb-2">
+                            <span>[SUCCESS]: Pull Request Dispatch Confirmed</span>
+                        </div>
+                        <a href="${data.pr_url}" target="_blank" class="text-cyan-400 underline hover:text-cyan-300 block mb-3 break-all font-mono">${data.pr_url}</a>
+                        <div class="text-slate-500 text-[10px] uppercase tracking-wider mb-1">Synthesized Changelog Output:</div>
+                        <pre class="bg-black/60 p-3 rounded-lg border border-cyan-500/20 text-slate-300 text-[11px] font-mono overflow-x-auto">${data.summary}</pre>
+                    `;
+                } else if (data.status === "warning") {
+                    resultDiv.innerHTML = `<p class="text-amber-400">⚠️ [WARNING]: ${data.message}</p>`;
+                } else {
+                    resultDiv.innerHTML = `<p class="text-rose-400">❌ [SYSTEM_ERR]: ${data.message || data.detail}</p>`;
+                }
+            } catch (err) {
+                loadingDiv.classList.add('hidden');
+                resultDiv.classList.remove('hidden');
+                resultDiv.innerHTML = `<p class="text-rose-400">❌ [NETWORK_ERR]: Unable to reach API server at http://localhost:8000.</p>`;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+</html>
