@@ -133,7 +133,14 @@ GitHub: [Swapna V on GitHub](https://github.com/swapnarmk007-dot)
 
 This project does not currently specify an open-source license. A suitable license can be selected and added to the repository when required.
 
----
+--- # 🚀 GitHub Changelog MCP Agent
+
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-brightgreen?style=for-the-badge\&logo=streamlit)](https://95awv2qfof56dxejqcr8w7.streamlit.app/)
+
+An AI-powered GitHub Changelog Agent built with Python and Streamlit.
+
+**🌐 Live Application:** [Click here to try the app](https://95awv2qfof56dxejqcr8w7.streamlit.app/)
+
 
 **Developed by Swapna V | GitHub Release Agent**
 
