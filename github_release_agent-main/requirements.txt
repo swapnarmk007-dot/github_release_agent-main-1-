@@ -1,10 +1,6 @@
-fastapi
-uvicorn
-pydantic
-mcp
-anyio
-google-genai
-httpx
-python-dotenv
+streamlit
 langchain-core
 langchain-google-genai
+mcp
+pydantic
+python-dotenv
